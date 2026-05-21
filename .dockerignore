@@ -1,0 +1,30 @@
+# Docker image ichiga KIRMASLIGI kerak bo'lgan fayllar
+
+# Maxfiy fayllar (sirlar Render dashboard'idan beriladi)
+.env
+.env.example
+
+# Baza va foydalanuvchi ma'lumotlari (konteyner toza boshlanadi)
+*.db
+endoscan.db
+uploads/
+logs/
+
+# Git
+.git
+**/.git
+.gitignore
+
+# Python keshlari
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Java kompilyatsiya natijasi (image ichida qayta kompilyatsiya qilinadi)
+java_stats_service/out/
+java_stats_service/logs/
+
+# Boshqalar
+*.code-workspace
+v3.zip
+DEPLOY.md

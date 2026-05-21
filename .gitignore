@@ -1,0 +1,28 @@
+# --- Maxfiy fayllar (HECH QACHON yuklamang) ---
+.env
+trained_model/.env
+
+# --- Baza va foydalanuvchi ma'lumotlari ---
+*.db
+endoscan.db
+uploads/
+logs/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# --- Java ---
+java_stats_service/out/
+*.class
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db

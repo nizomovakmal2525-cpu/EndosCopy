@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EndoScan AI — Bosh sahifa</title>
+<link href="./EndoScan AI_files/css2" rel="stylesheet">
+<link rel="stylesheet" href="./EndoScan AI_files/endoscan-ai.css">
+</head>
+<body data-endoscan-page="home">
+
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="logo-wrap" onclick="goToHomePage()">
+      <div class="logo-dot">
+        <svg viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="5.5" stroke="#fff" stroke-width="1.4"/>
+          <circle cx="8" cy="8" r="2" fill="#fff"/>
+          <path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-name">EndoScan AI</div>
+        <div class="logo-sub">v2.4 · Medical</div>
+      </div>
+    </div>
+
+    <div class="nav-block">
+      <div class="nav-item active" data-nav="home" onclick="goToHomePage()">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M2 6.5L7 2l5 4.5V12a1 1 0 01-1 1H3a1 1 0 01-1-1V6.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        Bosh sahifa
+      </div>
+      <div class="nav-item" data-nav="news" onclick="goToNewsPage()">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M2 3h10v8H2V3z" stroke="currentColor" stroke-width="1.2"/><path d="M4 6h6M4 8.5h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Yangiliklar
+      </div>
+      <div class="nav-item" data-nav="analyze" data-require-auth onclick="goToAnalysisPage()">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M7 1l1.2 2.9L11 4.4l-2.5 2.4.6 3.4L7 8.8 3.4 10.2l.6-3.4L1 4.4l3.8-.5L7 1z" fill="currentColor"/></svg>
+        AI Tahlil
+      </div>
+      <div class="nav-item" data-nav="history" data-require-auth onclick="showHistory()">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v6l3 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/></svg>
+        Tarix
+      </div>
+      <div class="nav-item" data-nav="about" onclick="goToSection('about-section')">
+        <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3m0 3h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Biz haqimizda
+      </div>
+      <div class="nav-item" data-nav="contact" onclick="goToSection('contact-section')">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M13 1L1 6l4.5 2L13 1zM5.5 8l2 5 5.5-12-7.5 7z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        Aloqa
+      </div>
+    </div>
+
+    <div class="user-block">
+      <span class="topbar-stat-pill">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M8 8a3 3 0 100-6 3 3 0 000 6zM3 14c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <span data-visitor-count>32 ta foydalanuvchi</span>
+      </span>
+      <button class="theme-btn" onclick="toggleTheme()" title="Tungi rejim">
+        <svg id="iconMoon" viewBox="0 0 16 16" fill="none"><path d="M13.5 10.5A6 6 0 015.5 2.5a6 6 0 108 8z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg id="iconSun" viewBox="0 0 16 16" fill="none" style="display:none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-item" style="cursor: default;">
+        <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 12c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span id="sidebarUserName" style="font-weight: 600;">Mehmon</span>
+      </div>
+      <button class="glass-btn btn-login" id="btnLogin" type="button" onclick="goToLoginPage()">Kirish</button>
+      <button class="glass-btn btn-logout" id="btnLogout" type="button" onclick="logout()" style="display:none">Chiqish</button>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+
+    <div class="home-content">
+      <div class="home-stats">
+        <div class="home-stat-card">
+          <div class="stat-value" data-visitor-count>32</div>
+          <div class="stat-label">ta foydalanuvchi saytdan foydalandi</div>
+        </div>
+        <div class="home-stat-card">
+          <div class="stat-value">AI</div>
+          <div class="stat-label">Endoskopik tasvirlarni avtomatik tahlil</div>
+        </div>
+        <div class="home-stat-card">
+          <div class="stat-value">24/7</div>
+          <div class="stat-label">Yangiliklar hammaga ochiq</div>
+        </div>
+      </div>
+
+      <section class="home-hero">
+        <span class="home-hero-badge">
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.2 2.9L11 4.4l-2.5 2.4.6 3.4L6 8.8 2.9 10.2l.6-3.4L1 4.4l3.8-.5L6 1z" fill="currentColor"/></svg>
+          Tibbiy AI platformasi
+        </span>
+        <h1>Endoskopik tasvirlarni tez va aniq tahlil qiling</h1>
+        <p>EndoScan AI gastroduodenoskopiya va kolonoskopiya tasvirlarini yuklab, mukoza holati, anomaliyalar va tavsiyalarni avtomatik baholaydi. Shifokorlar uchun qulay, zamonaviy interfeys.</p>
+        <div class="home-cta-row">
+          <button class="glass-btn btn-teal" onclick="goToAnalysisPage()">
+            <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.2 2.9L11 4.4l-2.5 2.4.6 3.4L6 8.8 2.9 10.2l.6-3.4L1 4.4l3.8-.5L6 1z" fill="currentColor"/></svg>
+            AI Tahlilni boshlash
+          </button>
+          <button class="glass-btn" onclick="goToNewsPage()">Yangiliklar</button>
+        </div>
+      </section>
+
+      <div class="home-grid">
+        <article class="home-card">
+          <div class="home-card-icon">
+            <svg viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 9l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>AI tashxis</h3>
+          <p>Endoskopik rasmlarni yuklang va bir necha soniyada ehtimoliy tashxis va ishonch darajasini oling.</p>
+        </article>
+        <article class="home-card">
+          <div class="home-card-icon">
+            <svg viewBox="0 0 18 18" fill="none"><path d="M3 14V6l6-4 6 4v8" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M7 14v-4h4v4" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+          <h3>Tahlil tarixi</h3>
+          <p>Barcha o'tgan tahlillar saqlanadi — istalgan vaqtda qayta ko'rib chiqish mumkin.</p>
+        </article>
+        <article class="home-card">
+          <div class="home-card-icon">
+            <svg viewBox="0 0 18 18" fill="none"><path d="M3 4h12M3 8h8M3 12h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </div>
+          <h3>So'nggi yangiliklar</h3>
+          <p>Endoskopiya va gastroenterologiya bo'yicha xalqaro yangiliklar va qo'llanmalar.</p>
+        </article>
+      </div>
+
+      <section class="home-hero" style="margin-top: 40px; background: var(--bg3);">
+        <h2 style="margin-bottom: 20px;">Platforma haqida</h2>
+        <p>EndoScan AI — bu zamonaviy gastroenterologiya uchun yaratilgan innovatsion yechim. Bizning maqsadimiz shifokorlarga endoskopik tekshiruvlar jarayonida qaror qabul qilishda yordam berish va tashxis aniqligini oshirishdir.</p>
+        <p>Platforma minglab endoskopik tasvirlar asosida o'qitilgan chuqur o'rganish (Deep Learning) algoritmlaridan foydalanadi. Bu orqali inson ko'zi ilg'ashi qiyin bo'lgan mitti o'zgarishlarni ham aniqlash imkoniyati kengayadi.</p>
+        
+        <div style="margin-top: 30px;">
+          <h3 style="margin-bottom: 15px; font-size: 18px;">Qanday ishlaydi?</h3>
+          <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">
+            <li style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="background: var(--teal); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: bold;">1</span>
+              <div>
+                <strong>Tasvirni yuklash:</strong> Endoskopiya qurilmasidan olingan sifatli rasmni (JPEG, PNG, DICOM) tizimga yuklang.
+              </div>
+            </li>
+            <li style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="background: var(--teal); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: bold;">2</span>
+              <div>
+                <strong>AI Tahlil:</strong> Sun'iy intellekt tasvirni bir necha qatlamda tahlil qiladi: shilliq qavat holati, qon tomirlar chizmasi va anomaliyalar.
+              </div>
+            </li>
+            <li style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="background: var(--teal); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: bold;">3</span>
+              <div>
+                <strong>Natija va Tavsiya:</strong> Bir necha soniyadan so'ng tizim ehtimoliy tashxisni va xalqaro protokollarga asoslangan tavsiyalarni taqdim etadi.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="about-section" class="home-hero" style="margin-top: 40px; background: var(--bg2);">
+        <h2 style="margin-bottom: 20px;">Biz haqimizda</h2>
+        <p>EndoScan AI — bu yuqori texnologiyalar va tibbiyotning uyg'unligi. Bizning jamoamiz endoskopik tekshiruvlarni yangi bosqichga olib chiqish, shifokorlarga aniq va tezkor qarorlar qabul qilishda yordam berishni maqsad qilgan.</p>
+        
+        <div style="margin-top: 30px;">
+          <h3 style="margin-bottom: 20px; font-size: 18px; text-align: center;">Loyiha tashkilotchilari</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+            <div class="home-card" style="text-align: center; padding: 25px; background: var(--bg3);">
+              <div class="home-card-icon" style="margin: 0 auto 15px;">
+                <svg viewBox="0 0 18 18" fill="none"><path d="M9 9a3 3 0 100-6 3 3 0 000 6zM3 15c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              </div>
+              <h3 style="font-size: 16px;">Oblaqulov Ilyos</h3>
+              <p style="font-size: 13px; color: var(--teal); font-weight: 600; margin-bottom: 8px;">Dizayn mutaxassisi</p>
+              <p style="font-size: 12px;">Platformaning intuitiv va zamonaviy interfeysi yaratuvchisi.</p>
+            </div>
+            <div class="home-card" style="text-align: center; padding: 25px; background: var(--bg3);">
+              <div class="home-card-icon" style="margin: 0 auto 15px;">
+                <svg viewBox="0 0 18 18" fill="none"><path d="M9 3L4 6v6l5 3 5-3V6l-5-3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M9 3v12M4 6l10 6M14 6L4 12" stroke="currentColor" stroke-width="1.3"/></svg>
+              </div>
+              <h3 style="font-size: 16px;">Sotiboldiyev Asadbek</h3>
+              <p style="font-size: 13px; color: var(--teal); font-weight: 600; margin-bottom: 8px;">AI mutaxassisi</p>
+              <p style="font-size: 12px;">Sun'iy intellekt algoritmlari va tasvirni tahlil qilish modellari ustasi.</p>
+            </div>
+            <div class="home-card" style="text-align: center; padding: 25px; background: var(--bg3);">
+              <div class="home-card-icon" style="margin: 0 auto 15px;">
+                <svg viewBox="0 0 18 18" fill="none"><path d="M4 6h10M4 10h10M4 14h10M2 2h14v14H2V2z" stroke="currentColor" stroke-width="1.3"/></svg>
+              </div>
+              <h3 style="font-size: 16px;">Sanaqulov Quvonchbek</h3>
+              <p style="font-size: 13px; color: var(--teal); font-weight: 600; margin-bottom: 8px;">Backend dasturchi</p>
+              <p style="font-size: 12px;">Tizimning barqaror ishlashi va ma'lumotlar xavfsizligi mas'uli.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact-section" class="home-hero" style="margin-top: 40px; background: var(--teal-p); border-color: var(--teal-l);">
+        <h2 style="margin-bottom: 15px;">Aloqa</h2>
+        <p>Savollaringiz yoki takliflaringiz bormi? Biz bilan bog'lanish uchun telegram tugmasini bosing. Jamoamiz har doim yangi g'oyalar va hamkorlik uchun ochiq!</p>
+        <div style="margin-top: 20px;">
+          <a href="https://t.me/Oblaqulov_Ilyos" target="_blank" class="glass-btn btn-teal" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M13 1L1 6l4.5 2L13 1zM5.5 8l2 5 5.5-12-7.5 7z" fill="currentColor"/></svg>
+            Telegram orqali bog'lanish
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</div>
+
+<script src="./EndoScan AI_files/endoscan-ai.js.download"></script>
+</body>
+</html>

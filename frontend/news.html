@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EndoScan AI — Yangiliklar</title>
+<link href="./EndoScan AI_files/css2" rel="stylesheet">
+<link rel="stylesheet" href="./EndoScan AI_files/endoscan-ai.css">
+</head>
+<body data-endoscan-page="news">
+
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="logo-wrap" onclick="goToHomePage()">
+      <div class="logo-dot">
+        <svg viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="5.5" stroke="#fff" stroke-width="1.4"/>
+          <circle cx="8" cy="8" r="2" fill="#fff"/>
+          <path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-name">EndoScan AI</div>
+        <div class="logo-sub">v2.4 · Medical</div>
+      </div>
+    </div>
+
+    <div class="nav-block">
+      <div class="nav-item" data-nav="home" onclick="goToHomePage()">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M2 6.5L7 2l5 4.5V12a1 1 0 01-1 1H3a1 1 0 01-1-1V6.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        Bosh sahifa
+      </div>
+      <div class="nav-item active" data-nav="news" onclick="goToNewsPage()">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M2 3h10v8H2V3z" stroke="currentColor" stroke-width="1.2"/><path d="M4 6h6M4 8.5h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Yangiliklar
+      </div>
+      <div class="nav-item" data-nav="analyze" data-require-auth onclick="goToAnalysisPage()">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M7 1l1.2 2.9L11 4.4l-2.5 2.4.6 3.4L7 8.8 3.4 10.2l.6-3.4L1 4.4l3.8-.5L7 1z" fill="currentColor"/></svg>
+        AI Tahlil
+      </div>
+      <div class="nav-item" data-nav="history" data-require-auth onclick="showHistory()">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v6l3 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/></svg>
+        Tarix
+      </div>
+      <div class="nav-item" onclick="goToSection('about-section')">
+        <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3m0 3h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Biz haqimizda
+      </div>
+      <div class="nav-item" onclick="goToSection('contact-section')">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M13 1L1 6l4.5 2L13 1zM5.5 8l2 5 5.5-12-7.5 7z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        Aloqa
+      </div>
+    </div>
+
+    <div class="user-block">
+      <span class="topbar-stat-pill">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M8 8a3 3 0 100-6 3 3 0 000 6zM3 14c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <span data-visitor-count>32 ta foydalanuvchi</span>
+      </span>
+      <button class="theme-btn" onclick="toggleTheme()" title="Tungi rejim">
+        <svg id="iconMoon" viewBox="0 0 16 16" fill="none"><path d="M13.5 10.5A6 6 0 015.5 2.5a6 6 0 108 8z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg id="iconSun" viewBox="0 0 16 16" fill="none" style="display:none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-item" style="cursor: default;">
+        <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 12c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span id="sidebarUserName" style="font-weight: 600;">Mehmon</span>
+      </div>
+      <button class="glass-btn btn-login" id="btnLogin" type="button" onclick="goToLoginPage()">Kirish</button>
+      <button class="glass-btn btn-logout" id="btnLogout" type="button" onclick="logout()" style="display:none">Chiqish</button>
+    </div>
+  </aside>
+
+  <div class="main-wrapper" style="display: flex; flex-direction: row; height: calc(100vh - 64px);">
+    <div style="width: 300px; border-right: 0.5px solid var(--border); display: flex; flex-direction: column; background: var(--bg2);">
+      <div class="nav-lbl" style="padding: 16px 16px 8px; display: block;">Yangiliklar ro'yxati</div>
+      <div class="news-sidebar">
+        <ul class="item-list item-list--indented">
+          <li class="item-list__item active" data-article="dominitz" onclick="showNewsArticle('dominitz')">
+            <div class="item-list__date">
+              <span class="item-list__month">May</span>
+              <span class="item-list__day">05</span>
+            </div>
+            <div class="body-container">
+              <h3 class="item-list__title">
+                <a href="#" onclick="event.preventDefault(); showNewsArticle('dominitz')">Jason A. Dominitz ASGE prezidenti sifatida inauguratsiya qildi</a>
+              </h3>
+              <div class="summary-container">ASGE Jason A. Dominitz, MD, MS, MASGE ni jamiyatning yangi prezidenti sifatida inauguratsiya qilishdan mamnuniyat bilan e'lon qildi.</div>
+            </div>
+          </li>
+          <li class="item-list__item" data-article="georgia" onclick="showNewsArticle('georgia')">
+            <div class="item-list__date">
+              <span class="item-list__month">Aprel</span>
+              <span class="item-list__day">07</span>
+            </div>
+            <div class="body-container">
+              <h3 class="item-list__title">
+                <a href="#" onclick="event.preventDefault(); showNewsArticle('georgia')">Sug'urtalanmagan bemorlarni tekshirishni o'z ichiga olgan Jorjiya byudjeti</a>
+              </h3>
+              <div class="summary-container">Jorjiya shtatining 2027 moliya yili byudjetida qishloq joylardagi sug'urtalanmagan bemorlar uchun YIS skriningiga 900 ming dollardan ortiq mablag' ajratildi.</div>
+            </div>
+          </li>
+          <li class="item-list__item" data-article="bowel-prep" onclick="showNewsArticle('bowel-prep')">
+            <div class="item-list__date">
+              <span class="item-list__month">Mart</span>
+              <span class="item-list__day">27</span>
+            </div>
+            <div class="body-container">
+              <h3 class="item-list__title">
+                <a href="#" onclick="event.preventDefault(); showNewsArticle('bowel-prep')">Kolonoskopiya uchun ichakni tayyorlash sifatini optimallashtirish</a>
+              </h3>
+              <div class="summary-container">Ushbu qo'llanma AQSh Ko'p Jamiyatli Ishchi Guruhining kolonoskopiya uchun ichakni tozalashning yetarliligini optimallashtirish bo'yicha tavsiyalaridir.</div>
+            </div>
+          </li>
+          <li class="item-list__item" data-article="olympus" onclick="showNewsArticle('olympus')">
+            <div class="item-list__date">
+              <span class="item-list__month">Mart</span>
+              <span class="item-list__day">17</span>
+            </div>
+            <div class="body-container">
+              <h3 class="item-list__title">
+                <a href="#" onclick="event.preventDefault(); showNewsArticle('olympus')">Olympus ASGEda endoskopiya texnologiyasiga 1 million dollar sarmoya kiritadi</a>
+              </h3>
+              <div class="summary-container">Mart oyida Milliy kolorektal saraton kasalligiga qarshi kurash oyligini nishonlayotganimizda, ASGE Olympus kompaniyasidan endoskopiya uskunalarini saxovat bilan xayriya qilganini e'lon qildi.</div>
+            </div>
+          </li>
+          <li class="item-list__item" data-article="guideline" onclick="showNewsArticle('guideline')">
+            <div class="item-list__date">
+              <span class="item-list__month">Mart</span>
+              <span class="item-list__day">10</span>
+            </div>
+            <div class="body-container">
+              <h3 class="item-list__title">
+                <a href="#" onclick="event.preventDefault(); showNewsArticle('guideline')">ASGE qo'llanmasi uchun ommaviy sharhlar davri ochiq</a>
+              </h3>
+              <div class="summary-container">Amaliyot standartlari qo'mitasi "... bilan og'rigan bemorlarda qizilo'ngach va oshqozon varikoz tomirlarini davolash bo'yicha ASGE qo'llanmasi"ni ishlab chiqdi.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="news-main-panel">
+      <p style="font-size:13px;color:var(--text3);margin-bottom:20px;">Chap ro'yxatdan yangilikni tanlang — to'liq matn o'zbek tilida ko'rsatiladi.</p>
+
+      <article id="article-dominitz" class="news-article active">
+        <div class="news-article-meta">May 05, 2026 · ASGE</div>
+        <h2>Jason A. Dominitz ASGE prezidenti sifatida inauguratsiya qildi</h2>
+        <div class="news-article-body">
+          <p>Amerika Gastrointestinal Endoskopiya Jamiyati (ASGE) Jason A. Dominitz, MD, MS, MASGE ni jamiyatning yangi prezidenti sifatida inauguratsiya qilishdan mamnuniyat bilan e'lon qiladi.</p>
+          <p>Dr. Dominitz — Washington universiteti Tibbiyot fakulteti va Seattle VA sog'liqni saqlash tizimidagi gastroenterologiya bo'limi professori. U klinik tadqiqotlar, yo'g'on ichak saratoni (YIS) skriningi va endoskopik xizmatlarni rivojlantirish sohasida keng tajribaga ega mutaxassis hisoblanadi.</p>
+          <p>Prezident lavozimiga kirishish jarayonida Dr. Dominitz ASGE a'zolariga xizmat ko'rsatish, ta'lim dasturlarini kengaytirish va endoskopiya sohasidagi innovatsiyalarni qo'llab-quvvatlashga intilishini ta'kidladi.</p>
+        </div>
+      </article>
+
+      <article id="article-georgia" class="news-article">
+        <div class="news-article-meta">Aprel 07, 2026 · ASGE CRC loyihasi</div>
+        <h2>Sug'urtalanmagan bemorlarni tekshirishni o'z ichiga olgan Jorjiya byudjeti</h2>
+        <div class="news-article-body">
+          <p>Bugun ASGE birinchi marta Jorjiya shtatining 2027 moliya yili (FY2027) byudjetida qishloq joylardagi sug'urtalanmagan bemorlar uchun YIS skriningiga 900 ming dollardan ortiq mablag' ajratilganini ma'qulladi.</p>
+          <p>Ushbu yutuq jamiyat uchun muhim qadam bo'lib, xizmat ko'rsatilmagan hududlarda saratonni erta aniqlash imkoniyatini oshiradi.</p>
+        </div>
+      </article>
+
+      <article id="article-bowel-prep" class="news-article">
+        <div class="news-article-meta">Mart 27, 2026 · Qo'llanma</div>
+        <h2>Kolonoskopiya uchun ichakni tayyorlash sifatini optimallashtirish</h2>
+        <div class="news-article-body">
+          <p>Ushbu qo'llanma AQSh Ko'p Jamiyatli Ishchi Guruhining kolonoskopiya uchun ichakni tozalashning yetarliligini optimallashtirish bo'yicha tavsiyalariga yangilanishdir.</p>
+          <p>Sifatli tayyorgarlik kolonoskopiyaning aniqligi va adenomalarni aniqlash darajasi uchun o'ta muhim hisoblanadi.</p>
+        </div>
+      </article>
+
+      <article id="article-olympus" class="news-article">
+        <div class="news-article-meta">Mart 17, 2026 · Texnologiya</div>
+        <h2>Olympus ASGEda endoskopiya texnologiyasiga 1 million dollar sarmoya kiritadi</h2>
+        <div class="news-article-body">
+          <p>Olympus kompaniyasi ASGEda oshqozon-ichak trakti bo'yicha ta'limni rivojlantirish uchun endoskopiya texnologiyasiga 1 million dollar sarmoya kiritishini e'lon qildi.</p>
+          <p>Bu sarmoya shifokorlarning malakasini oshirish va yangi avlod endoskopik uskunalaridan foydalanishni o'rganishga xizmat qiladi.</p>
+        </div>
+      </article>
+
+      <article id="article-guideline" class="news-article">
+        <div class="news-article-meta">Mart 10, 2026 · ASGE Qo'llanmasi</div>
+        <h2>ASGE qo'llanmasi uchun ommaviy sharhlar davri ochiq</h2>
+        <div class="news-article-body">
+          <p>Amaliyot standartlari (SOP) qo'mitasi "... bilan og'rigan bemorlarda qizilo'ngach va oshqozon varikoz tomirlarini davolash bo'yicha ASGE qo'llanmasi" nomli qo'llanmani ishlab chiqdi.</p>
+          <p>Hozirda barcha mutaxassislar ushbu qo'llanma bo'yicha o'z fikr va mulohazalarini bildirishlari mumkin.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="./EndoScan AI_files/endoscan-ai.js.download"></script>
+</body>
+</html>

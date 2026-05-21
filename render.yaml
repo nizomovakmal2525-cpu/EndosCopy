@@ -1,0 +1,27 @@
+# ============================================================
+#  Render.com Blueprint — EndoScan AI
+#  Bu fayl bo'lsa, Render loyihani avtomatik sozlaydi.
+# ============================================================
+services:
+  - type: web
+    name: endoscan-ai
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+
+    # Render Free demo uchun. Eslatma: free servis 15 daqiqa ishlatilmasa uxlaydi
+    # va lokal SQLite/uploads ma'lumotlari restart/deploydan keyin saqlanmaydi.
+    plan: free
+
+    region: frankfurt
+    healthCheckPath: /
+
+    envVars:
+      # Maxfiy qiymatlar — Render dashboard'ida QO'LDA kiritiladi
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: JWT_SECRET_KEY
+        sync: false
+      - key: ENDOSCAN_ADMIN_PASSWORD
+        sync: false
+      - key: ENDOSCAN_ADMIN_USERNAME
+        value: admin

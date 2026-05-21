@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EndoScan AI - User Dashboard</title>
+<link href="/static/css/fonts.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/stats-dashboard.css">
+</head>
+<body class="stats-body" data-stats-scope="user" data-stats-section="{{ section }}" data-current-user="{{ user.sub if user else 'User' }}">
+<div class="stats-app">
+  <aside class="stats-sidebar">
+    <div class="stats-brand" onclick="location.href='/'">
+      <div class="stats-brand-mark">E</div>
+      <div>
+        <div class="stats-brand-name">EndoScan AI</div>
+        <div class="stats-brand-sub">User statistics</div>
+      </div>
+    </div>
+    <nav class="stats-nav" id="statsNav"></nav>
+  </aside>
+
+  <main class="stats-main">
+    <header class="stats-topbar">
+      <input class="stats-search" type="search" placeholder="Search analysis..." aria-label="Search analysis">
+      <div class="stats-profile">
+        <span class="stats-profile-dot"></span>
+        <span id="statsProfileName">User</span>
+      </div>
+    </header>
+
+    <section class="stats-content">
+      <div class="stats-title-row">
+        <div>
+          <h1 id="statsTitle">Welcome back</h1>
+          <p id="statsSubtitle">Your latest AI-assisted health analysis overview.</p>
+        </div>
+        <a class="stats-home-link" href="/">Main site</a>
+      </div>
+
+      <div class="stats-filter-row" id="statsFilters"></div>
+      <div class="stats-card-grid" id="statsCards"></div>
+      <section class="stats-panel" id="statsNotifications"></section>
+      <div class="stats-panel-grid" id="statsPanels"></div>
+      <div class="stats-chart-grid" id="statsCharts"></div>
+      <section class="stats-panel" id="statsTimeline"></section>
+      <section class="stats-panel" id="statsForm"></section>
+
+      <div class="stats-grid-2">
+        <section class="stats-panel" id="statsTable"></section>
+        <section class="stats-panel" id="statsNotes"></section>
+      </div>
+      <div class="stats-action-row" id="statsActions"></div>
+    </section>
+  </main>
+</div>
+
+<script src="/static/js/stats-dashboard.js"></script>
+</body>
+</html>
